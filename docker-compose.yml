@@ -3,10 +3,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: development
+    container_name: mojicount-app
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+      - mojicount_node_modules:/app/node_modules
+      - mojicount_next:/app/.next
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - PORT=3000
+      - HOSTNAME=0.0.0.0
+    command: sh -c "npm install && npm run dev"
     restart: unless-stopped
-    container_name: mojicount-app
+
+volumes:
+  mojicount_node_modules:
+  mojicount_next:
+

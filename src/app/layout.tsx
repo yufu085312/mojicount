@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import { Toaster } from "sonner";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -69,6 +70,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <GoogleAnalytics gaId="G-CWXGDDCZ4E" />
         <Toaster position="top-right" richColors />
       </body>
     </html>
