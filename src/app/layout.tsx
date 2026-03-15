@@ -13,7 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mojicount.yu-fu.site"),
-  title: "MojiCount｜文字数カウントアプリ（SNS・SEO・原稿用紙対応）",
+  title: "文字数カウントアプリ-無料ツール",
   description: "文字数カウントアプリ。SNS（X、Instagramなど）文字数、原稿用紙換算、日本語文字分析、SEO文字数チェックに対応した無料ツールです。リアルタイムで文字数を自動計算します。",
   keywords: ["文字数カウント", "文字数 文字数カウント", "文字数カウント 空白", "文字数カウント 原稿用紙", "日本語 文字数カウント", "SEO 文字数チェック", "SNS文字数"],
   authors: [{ name: "Yufu" }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "文字数カウントアプリ MojiCount",
+    title: "文字数カウントアプリ-無料ツール",
     description: "SNS文字数、原稿用紙換算、日本語分析、SEO文字数チェックに対応した高機能な無料ツール。",
     url: "https://mojicount.yu-fu.site",
     siteName: "MojiCount",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MojiCount｜文字数カウントアプリ（SNS・SEO・原稿用紙対応）",
+    title: "文字数カウントアプリ-無料ツール",
     description: "SNS文字数、原稿用紙換算、日本語分析、SEO文字数チェックに対応した高機能な無料ツール。",
   },
   icons: {
