@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MojiCount (文字数カウント)
 
-## Getting Started
+MojiCountは、文章作成に関わるすべての方のために開発された、多機能かつシンプルな高機能文字数カウントツールです。
+リアルタイムで文字数・行数・段落数を素早くカウントし、SNS投稿やSEOライティング、原稿作成など、特定の用途に合わせた計測を提供します。
 
-First, run the development server:
+## 🚀 主要機能
+
+### 1. 基本カウント
+- **文字数**: 総文字数のカウント
+- **空白抜き文字数**: スペース（全角・半角）を除外した文字数
+- **行数**: テキストの総行数
+- **段落数**: 空行で区切られた段落の数
+
+### 2. SNS最適化
+各プラットフォームの独自のカウントルールに対応しています。
+- **X (旧Twitter)**: 日本語（全角）を2文字、英数字（半角）を1文字、URLを一律23文字として正確にカウント。
+- **Instagram**: キャプション制限（2,200文字）に基づいた残り文字数表示。
+
+### 3. SEOライティングサポート
+検索エンジン最適化のための文字数目安を確認できます。
+- **タイトル**: 30〜35文字の推奨範囲をチェック。
+- **メタディスクリプション**: 110〜130文字の推奨範囲をチェック。
+
+### 4. 日本語文字分析
+文章の文体や読みやすさを客観的に把握するための比率分析。
+- ひらがな、カタカナ、漢字、英字、数字、記号のそれぞれの文字数とパーセンテージを表示。
+
+### 5. 原稿用紙換算
+- 400字詰め原稿用紙の枚数への自動換算。
+
+## 🛠 技術スタック
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## 🔒 セキュリティ・プライバシー
+- **完全クライアントサイド処理**: 入力されたテキストはすべて利用者のブラウザ上で処理されます。サーバーに送信されることは一切ないため、機密性の高い文書でも安心してご利用いただけます。
+
+## 📦 開発・実行方法 (Docker)
+
+Dockerを使用して、環境構築なしで素早く開発環境を起動できます。
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# コンテナのビルドと起動
+docker-compose up -d
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+起動後、ブラウザで [http://localhost:3000](http://localhost:3000) を開いて確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### その他のコマンド
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# コンテナの停止
+docker-compose down
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# ログの確認
+docker-compose logs -f
+```
