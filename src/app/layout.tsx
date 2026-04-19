@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     description: "SNS文字数、原稿用紙換算、日本語分析、SEO文字数チェックに対応した高機能な無料ツール。",
   },
   icons: {
+    icon: "/icon.png",
     apple: "/icon.png",
   },
 };
@@ -44,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body className={`${notoSansJP.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col`}>
+    <html lang="ja" suppressHydrationWarning>
+      <body className={`${notoSansJP.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col`} suppressHydrationWarning>
         {/* Header */}
         <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-center">
