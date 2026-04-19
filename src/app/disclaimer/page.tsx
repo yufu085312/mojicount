@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { BackButton } from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "免責事項 | MojiCount",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 export default function DisclaimerPage() {
   return (
     <div className="max-w-3xl mx-auto prose prose-slate dark:prose-invert prose-headings:font-bold prose-h1:text-3xl prose-a:text-blue-600 dark:prose-a:text-blue-400">
+      <BackButton />
       <h1>免責事項</h1>
       
       <h2>情報の正確性について</h2>

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { BackButton } from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "利用規約 | MojiCount",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="max-w-3xl mx-auto prose prose-slate dark:prose-invert prose-headings:font-bold prose-h1:text-3xl prose-a:text-blue-600 dark:prose-a:text-blue-400">
+      <BackButton />
       <h1>利用規約</h1>
       <p>この利用規約（以下、「本規約」といいます。）は、MojiCount（以下、「本サービス」といいます。）の利用条件を定めるものです。ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に従って、本サービスをご利用いただきます。</p>
       

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { BackButton } from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー | MojiCount",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto prose prose-slate dark:prose-invert prose-headings:font-bold prose-h1:text-3xl prose-a:text-blue-600 dark:prose-a:text-blue-400">
+      <BackButton />
       <h1>プライバシーポリシー</h1>
       <p>MojiCount（以下、「本サービス」といいます。）は、ユーザーの皆様のプライバシー保護を最重要視しています。本サービスにおける個人情報の取扱い、およびデータの処理方針について以下の通りプライバシーポリシーを定めます。</p>
 

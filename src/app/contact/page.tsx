@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Metadata } from "next";
+import { BackButton } from "@/components/BackButton";
 
 export default function ContactPage() {
   const [state, setState] = useState<{
@@ -76,6 +76,7 @@ export default function ContactPage() {
 
   return (
     <div className="max-w-2xl mx-auto py-8">
+      <BackButton />
       <div className="space-y-4 mb-8 text-center">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white">お問い合わせ</h1>
         <p className="text-slate-600 dark:text-slate-400">
