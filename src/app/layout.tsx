@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import { Toaster } from "sonner";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Link from "next/link";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({ 
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
     description: "SNS文字数、原稿用紙換算、日本語分析、SEO文字数チェックに対応した高機能な無料ツール。",
   },
   icons: {
+    icon: "/icon.png",
     apple: "/icon.png",
   },
 };
@@ -44,18 +46,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body className={`${notoSansJP.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col`}>
-        {/* Header */}
-        <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-center">
-            <Link href="/" className="hover:opacity-80 transition-opacity">
-              <h1 className="text-xl font-bold tracking-tight text-blue-600 dark:text-blue-400">
-                MojiCount
-              </h1>
-            </Link>
-          </div>
-        </header>
+    <html lang="ja" suppressHydrationWarning>
+      <body className={`${notoSansJP.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col`} suppressHydrationWarning>
+        <Header />
 
         {/* Main Content */}
         <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">

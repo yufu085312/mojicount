@@ -9,6 +9,7 @@ import { JapaneseAnalyzer } from "@/components/JapaneseAnalyzer";
 import { SEOCounter } from "@/components/SEOCounter";
 import { countAll, countWithoutSpaces, countLines, countParagraphs } from "@/lib/count";
 import { motion } from "framer-motion";
+import { CheckCircle2, Zap, ShieldCheck, HelpCircle, Keyboard, Copy } from "lucide-react";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -70,53 +71,103 @@ export default function Home() {
       </div>
 
       {/* SEO Content Section */}
-      <section className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800 space-y-10">
-        <div className="max-w-3xl mx-auto space-y-6 text-slate-700 dark:text-slate-300">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
-            MojiCount ｜ 文字数カウントをより便利に、効率的に。
-          </h3>
-          <p className="leading-relaxed">
-            MojiCountは、文章作成に関わるすべての方のために開発された、多機能かつシンプルな文字数カウントツールです。
-            ただ文字を数えるだけでなく、SNS投稿やSEOライティング、原稿作成など、特定の用途に合わせた最適な計測をリアルタイムで提供します。
-          </p>
+      <section className="mt-20 space-y-20">
+        {/* 1. 使い方 (Usage) */}
+        <div className="space-y-8">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center justify-center gap-2">
+              <Keyboard className="text-blue-500" />
+              使い方
+            </h3>
+            <p className="text-slate-500 mt-2">たった3ステップで、詳細な文字数・文章分析が可能です。</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "入力", desc: "テキストエリアに文章を入力するか、貼り付けます。ファイルを選択して読み込むことも可能です。", icon: Keyboard },
+              { title: "解析", desc: "入力と同時にリアルタイムで解析が始まります。SNSやSEO、原稿用紙の基準に合わせた数値が表示されます。", icon: Zap },
+              { title: "活用", desc: "「コピー」ボタンを使って、解析結果や文章を保持できます。作業の効率化にお役立てください。", icon: Copy },
+            ].map((step, i) => (
+              <div key={i} className="relative p-6 bg-slate-50 dark:bg-slate-800/30 rounded-2xl border border-slate-100 dark:border-slate-800">
+                <div className="absolute -top-4 -left-4 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-lg">
+                  {i + 1}
+                </div>
+                <div className="mt-4 space-y-2">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-lg">{step.title}</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                SNS投稿に最適（X, Instagram）
-              </h4>
-              <p className="text-sm leading-relaxed">
-                プラットフォームごとに異なるカウントルールに対応。特にX（旧Twitter）では、全角・半角の重み付けやURLの固定長カウントを正確にシミュレートし、投稿エラーを未然に防ぎます。
-              </p>
+        {/* 2. 特徴 ＆ 3. メリット */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <CheckCircle2 className="text-green-500" />
+              MojiCountの特徴
+            </h3>
+            <ul className="space-y-4">
+              {[
+                { t: "超高速・リアルタイム解析", d: "一文字入力するごとに瞬時にカウントを更新します。待ち時間はありません。" },
+                { t: "高度な日本語分析", d: "ひらがな・カタカナ・漢字の比率や、品詞の分布を詳しく解析できます。" },
+                { t: "各種プラットフォーム対応", d: "X(Twitter)、Instagramなど、独自の制限があるSNSに最適化しています。" },
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-colors">
+                  <div className="mt-1"><Zap size={20} className="text-blue-500" /></div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white">{item.t}</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">{item.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <ShieldCheck className="text-blue-500" />
+              利用するメリット
+            </h3>
+            <div className="grid grid-cols-1 gap-4">
+              {[
+                { t: "登録不要・完全無料", d: "すべての機能を今すぐ無料で利用できます。面倒な登録作業は一切ありません。" },
+                { t: "安心のプライバシー保護", d: "入力した内容はサーバーに送信されず、ブラウザ内のみで処理されます。" },
+                { t: "多忙な作成者のための設計", d: "コピーボタン、ダークモード、SEO基準の可視化など、効率化を追求しました。" },
+              ].map((item, i) => (
+                <div key={i} className="p-4 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 shadow-sm">
+                  <h4 className="font-bold text-blue-600 dark:text-blue-400 mb-1">{item.t}</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{item.d}</p>
+                </div>
+              ))}
             </div>
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                SEOライティングのサポート
-              </h4>
-              <p className="text-sm leading-relaxed">
-                Google検索結果で適切に表示されるためのタイトル（約32文字）やメタディスクリプション（約120文字）の目安を可視化。検索エンジン最適化を効率化します。
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                原稿用紙換算と日本語分析
-              </h4>
-              <p className="text-sm leading-relaxed">
-                400字詰め原稿用紙の枚数への自動換算、ひらがな・カタカナ・漢字の比率分析機能を搭載。文章の文体やバランス、読みやすさの客観的な指標として活用できます。
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h4 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
-                安心のプライバシー・安全設計
-              </h4>
-              <p className="text-sm leading-relaxed">
-                入力されたテキストはすべてお使いのブラウザ上で処理され、サーバーに送信されることはありません。機密性の高い文書のカウントも安心してお使いいただけます。
-              </p>
-            </div>
+          </div>
+        </div>
+
+        {/* 4. FAQ */}
+        <div className="space-y-8 bg-slate-50 dark:bg-slate-800/20 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center justify-center gap-2">
+              <HelpCircle className="text-blue-500" />
+              よくある質問 (FAQ)
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { q: "入力したデータは保存されますか？", a: "いいえ、入力されたテキストや解析結果がサーバーへ送信・保存されることはありません。すべての処理はブラウザ上で行われるため、機密性の高い文章でも安心してお使いいただけます。" },
+              { q: "X(Twitter)の文字計算は正確ですか？", a: "はい、現在のXの仕様に基づき、全角2文字・半角1文字として正確にシミュレートしています。URLやメディアの重み付けにも対応予定です。" },
+              { q: "400字詰め原稿用紙の枚数はどう計算されますか？", a: "単純な文字数ではなく、実際の原稿用紙での行の折り返しを考慮したシミュレーション値を表示しています。" },
+              { q: "商用利用は可能ですか？", a: "はい、個人・法人問わず、すべての機能を無料で商用利用いただけます。報告なども不要です。" },
+            ].map((faq, i) => (
+              <div key={i} className="space-y-2">
+                <h4 className="font-bold text-slate-900 dark:text-white flex gap-2">
+                  <span className="text-blue-500">Q.</span>
+                  {faq.q}
+                </h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed pl-6 border-l-2 border-blue-500/20">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -125,20 +176,52 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "MojiCount",
-            "url": "https://mojicount.yu-fu.site",
-            "description": "SNS（X, Instagram）、SEO、原稿用紙、日本語分析に対応した高機能な文字数カウントツール。",
-            "applicationCategory": "UtilitiesApplication",
-            "operatingSystem": "All",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "JPY"
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "MojiCount",
+              "url": "https://mojicount.yu-fu.site",
+              "description": "SNS（X, Instagram）、SEO、原稿用紙、日本語分析に対応した高機能な文字数カウントツール。",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "All",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "JPY"
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "入力したデータは保存されますか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "いいえ、入力されたテキストや解析結果がサーバーへ送信・保存されることはありません。すべての処理はブラウザ上で行われるため、機密性の高い文章でも安心してお使いいただけます。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "X(Twitter)の文字計算は正確ですか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "はい、現在のXの仕様に基づき、全角2文字・半角1文字として正確にシミュレートしています。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "商用利用は可能ですか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "はい、個人・法人問わず、すべての機能を無料で商用利用いただけます。"
+                  }
+                }
+              ]
             }
-          })
+          ])
         }}
       />
     </div>
